@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package com.agilexrobotics.proto;
+
+message CommDataCouple {
+  float x = 1;
+  float y = 2;
+}
+

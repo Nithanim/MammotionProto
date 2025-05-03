@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package com.agilexrobotics.proto;
+
+enum infoType {
+  IT_BASE = 0;
+  IT_OTA = 1;
+}
+
+message baseInfo {
+  string dev_version = 1;
+  int32 dev_status = 2;
+  int32 batt_val = 3;
+  int32 init_status = 4;
+  int32 is_tilt = 5;
+}
+
+message otaInfo {
+  string otaid = 1;
+  string version = 2;
+  int32 progress = 3;
+  int32 result = 4;
+  string message = 5;
+}
+
+message getInfoReq {
+  com.agilexrobotics.proto.infoType type = 1;
+}
+
+message getInfoRsp {
+  oneof info {
+    com.agilexrobotics.proto.baseInfo base = 3;
+    com.agilexrobotics.proto.otaInfo ota = 4;
+  }
+  int32 result = 1;
+  com.agilexrobotics.proto.infoType type = 2;
+}
+
+message MctlOta {
+  oneof SubOtaMsg {
+    com.agilexrobotics.proto.getInfoReq todev_get_info_req = 1;
+    com.agilexrobotics.proto.getInfoRsp toapp_get_info_rsp = 2;
+  }
+}
+
