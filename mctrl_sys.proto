@@ -576,6 +576,48 @@ message debug_cfg_write_t {
   string value = 2;
 }
 
+message msgbus_pkt {
+  int32 type = 1;
+  int32 typeCommand = 2;
+  int32 recvDeviceId = 3;
+  int32 sendDeviceId = 4;
+  int32 dataLength = 5;
+  string data = 6;
+  int32 ctrl = 7;
+  int32 flag = 8;
+  int32 seqs = 9;
+}
+
+message response_set_mode_t {
+  int32 statue = 1;
+  int32 set_work_mode = 2;
+  int32 cur_work_mode = 3;
+}
+
+message dev_statue_t {
+  int32 sys_status = 1;
+  int32 charge_status = 2;
+  int32 bat_val = 3;
+  int32 wheel_status = 4;
+  int32 pump_status = 5;
+  int32 work_mode = 6;
+  int32 model = 7;
+}
+
+message report_info_t {
+  com.agilexrobotics.proto.dev_statue_t dev_status = 1;
+  int32 ota_status = 2;
+  string dev_version = 3;
+  int32 ota_progress = 4;
+  int32 ota_fw_code = 5;
+  int32 ota_fw_seq = 6;
+  int32 ota_fw_downloaded = 7;
+}
+
+message work_mode_t {
+  int32 work_mode = 1;
+}
+
 message MctlSys {
   oneof SubSysMsg {
     com.agilexrobotics.proto.SysBatUp toapp_batinfo = 1;
@@ -626,6 +668,11 @@ message MctlSys {
     com.agilexrobotics.proto.debug_cfg_read_t debug_cfg_read = 54;
     com.agilexrobotics.proto.debug_cfg_write_t debug_cfg_write = 55;
     com.agilexrobotics.proto.debug_res_cfg_ability_t debug_res_cfg_ability = 56;
+    com.agilexrobotics.proto.msgbus_pkt to_dev_msgbus = 57;
+    com.agilexrobotics.proto.msgbus_pkt to_app_msgbus = 58;
+    com.agilexrobotics.proto.response_set_mode_t response_set_mode = 59;
+    com.agilexrobotics.proto.report_info_t report_info = 60;
+    com.agilexrobotics.proto.work_mode_t set_work_mode = 61;
   }
 }
 

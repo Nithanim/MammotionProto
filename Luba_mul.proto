@@ -108,6 +108,10 @@ message MulSetWiperAck {
   com.agilexrobotics.proto.MUL_WIPER_ERROR_CODE error_code = 1;
 }
 
+message MulSetEncode {
+  bool encode = 1;
+}
+
 message SocMul {
   oneof SubMul {
     com.agilexrobotics.proto.MulSetAudio set_audio = 1;
@@ -120,6 +124,7 @@ message SocMul {
     com.agilexrobotics.proto.SetHeadlamp set_lamp = 8;
     com.agilexrobotics.proto.Setlamprsp set_lamp_rsp = 9;
     com.agilexrobotics.proto.Getlamprsp get_lamp_rsp = 10;
+    com.agilexrobotics.proto.MulSetEncode req_encode = 11;
   }
 }
 

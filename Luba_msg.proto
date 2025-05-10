@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package com.agilexrobotics.proto;
+
 import "mctrl_driver.proto";
 import "dev_net.proto";
 import "Luba_mul.proto";
